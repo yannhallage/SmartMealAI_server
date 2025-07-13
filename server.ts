@@ -1,7 +1,11 @@
 import App from './app';
+import { connectDB } from './config/db';
 
-// Create and start the server
-const app = new App();
+// Connect to MongoDB then start the server
+connectDB().then(() => {
+  const app = new App();
+  app.listen();
+});
 
 // Handle uncaught exceptions
 process.on('uncaughtException', (error: Error) => {
@@ -25,6 +29,3 @@ process.on('SIGINT', () => {
   console.log('SIGINT received, shutting down gracefully');
   process.exit(0);
 });
-
-// Start the server
-app.listen();

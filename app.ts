@@ -3,6 +3,7 @@ import cors from 'cors';
 import helmet from 'helmet';
 import rateLimit from 'express-rate-limit';
 import dotenv from 'dotenv';
+import userRoutes from './routes/user.routes';
 
 // Load environment variables
 dotenv.config();
@@ -27,7 +28,7 @@ class App {
     this.app.use(cors({
       origin: process.env.NODE_ENV === 'production' 
         ? ['https://your-frontend-domain.com'] 
-        : ['http://localhost:3000', 'http://localhost:3001'],
+        : ['http://localhost:3000', 'http://localhost:5173'],
       credentials: true
     }));
 
@@ -60,7 +61,8 @@ class App {
       });
     });
 
-    // API routes will be added here
+    // API routes
+    this.app.use('/api/users', userRoutes);
     // this.app.use('/api/recipes', recipeRoutes);
     // this.app.use('/api/auth', authRoutes);
 
