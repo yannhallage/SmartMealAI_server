@@ -4,6 +4,7 @@ import helmet from 'helmet';
 import rateLimit from 'express-rate-limit';
 import dotenv from 'dotenv';
 import userRoutes from './routes/user.routes';
+import recipeRoutes from './routes/recipe.routes';
 
 // Load environment variables
 dotenv.config();
@@ -63,7 +64,7 @@ class App {
 
     // API routes
     this.app.use('/api/users', userRoutes);
-    // this.app.use('/api/recipes', recipeRoutes);
+    this.app.use('/api/recipes', recipeRoutes);
     // this.app.use('/api/auth', authRoutes);
 
     // 404 handler
