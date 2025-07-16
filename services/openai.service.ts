@@ -43,7 +43,7 @@ ${ingredients.join(', ')}
 Critères santé à respecter : ${healthCriteria.length ? healthCriteria.join(', ') : 'aucun'}
 Allergènes à éviter : ${allergies.length ? allergies.join(', ') : 'aucun'}
 
-Génère exactement 7 recettes.  
+Génère exactement 7 recettes.
 Chaque recette doit être retournée **sous forme d'un objet JSON** respectant **cette structure** :
 
 {
@@ -77,6 +77,13 @@ Retourne un **tableau JSON** de 7 recettes comme celui-ci :
   { ... },
   ...
 ]
+
+Consignes importantes pour chaque recette :
+- Utilise un vocabulaire varié pour les titres, descriptions, instructions et ingrédients.
+- Évite de répéter les mêmes mots ou expressions d'une recette à l'autre.
+- Varie les styles culinaires, origines culturelles, et types de plats.
+- Les recettes doivent être originales et créatives.
+- Privilégie la diversité dans la formulation et la présentation.
 
 Ne retourne rien d'autre que le tableau JSON (aucune phrase autour).
 Langue : Français.

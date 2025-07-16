@@ -15,4 +15,7 @@ router.get('/user/:userId', RecipeController.getRecipesByUser);
 // Route pour récupérer une recette par son ID
 router.get('/:id', RecipeController.getRecipeById);
 
+// Route pour insérer une recette en base de données
+router.post('/insert', RecipeController.createRecipe);
+
 export default router; 

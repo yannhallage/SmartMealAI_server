@@ -127,6 +127,33 @@ export class RecipeController {
       });
     }
   }
+
+  static async createRecipe(req: Request, res: Response) {
+    try {
+      const recetteData = req.body;
+      // Validation basique (le schéma Mongoose gère le reste)
+      if (!recetteData || !recetteData.titre || !recetteData.utilisateurId) {
+        return res.status(400).json({
+          success: false,
+          message: 'Le titre et l\'utilisateurId sont requis.'
+        });
+      }
+      const nouvelleRecette = await Recipe.create(recetteData);
+      console.log('Recette insérée:', nouvelleRecette);
+      return res.status(201).json({
+        success: true,
+        message: 'Recette insérée avec succès',
+        data: nouvelleRecette
+      });
+    } catch (error) {
+      console.error('Erreur lors de l\'insertion de la recette:', error);
+      return res.status(500).json({
+        success: false,
+        message: 'Erreur lors de l\'insertion de la recette',
+        error: error instanceof Error ? error.message : 'Erreur inconnue'
+      });
+    }
+  }
 }
 
 export default RecipeController; 
